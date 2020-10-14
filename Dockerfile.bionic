@@ -2,8 +2,13 @@ FROM ubuntu:18.04
 
 WORKDIR /root/
 
+# Generate mirror.list
+RUN apt-get install -y apt-mirror lsb-release
+ADD mirror-list.sh .
+RUN ./mirror-list.sh > /etc/apt/mirror.list
+
 # Add libcuda dummy dependency
-ADD control .
+ADD mirror-list.sh .
 RUN apt-get update && \
 	apt-get install --yes equivs && \
 	equivs-build control && \

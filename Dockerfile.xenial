@@ -2,6 +2,11 @@ FROM ubuntu:16.04
 
 WORKDIR /root/
 
+# Generate mirror.list
+RUN apt-get install -y apt-mirror lsb-release
+ADD mirror-list.sh .
+RUN ./mirror-list.sh > /etc/apt/mirror.list
+
 # Add libcuda dummy dependency
 ADD control .
 RUN apt-get update && \
