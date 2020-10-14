@@ -21,6 +21,6 @@ ADD nginx.conf /etc/nginx.conf
 EXPOSE 80/tcp
 
 # Download packages
-RUN apt-mirror
+# RUN apt-mirror
 
 ENTRYPOINT nginx
