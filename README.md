@@ -15,3 +15,10 @@ sudo docker build -t apt-mirror:16.04 -f Dockerfile.xenial .
 sudo docker build -t apt-mirror:18.04 -f Dockerfile.bionic .
 sudo docker build -t apt-mirror:20.04 -f Dockerfile.focal .
 ```
+
+### Running images
+
+```
+sudo docker run -d --restart=always --net=host -t apt-mirror:18.04 /usr/sbin/nginx
+```
+
