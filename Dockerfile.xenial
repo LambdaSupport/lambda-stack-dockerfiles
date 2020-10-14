@@ -21,3 +21,5 @@ ADD nginx.conf /etc/nginx.conf
 
 # Download packages
 RUN apt-mirror
+
+ENTRYPOINT nginx

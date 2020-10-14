@@ -22,3 +22,5 @@ EXPOSE 80/tcp
 
 # Download packages
 RUN apt-mirror
+
+ENTRYPOINT nginx
