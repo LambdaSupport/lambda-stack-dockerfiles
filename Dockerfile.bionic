@@ -15,6 +15,11 @@ RUN apt-get install -y apt-mirror lsb-release
 ADD mirror-list.sh .
 RUN ./mirror-list.sh > /etc/apt/mirror.list
 
+# NGINX
+RUN apt-get install -y nginx
+ADD nginx.conf /etc/nginx.conf
+EXPOSE 80/tcp
+
 # Add libcuda dummy dependency
 ADD mirror-list.sh .
 RUN apt-get update && \
