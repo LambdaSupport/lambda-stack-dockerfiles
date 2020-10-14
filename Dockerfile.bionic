@@ -20,6 +20,9 @@ RUN apt-get install -y nginx
 ADD nginx.conf /etc/nginx.conf
 EXPOSE 80/tcp
 
+# Download packages
+RUN apt-mirror
+
 # Add libcuda dummy dependency
 ADD mirror-list.sh .
 RUN apt-get update && \

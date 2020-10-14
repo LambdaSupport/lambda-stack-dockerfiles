@@ -19,6 +19,9 @@ RUN ./mirror-list.sh > /etc/apt/mirror.list
 RUN apt-get install -y nginx
 ADD nginx.conf /etc/nginx.conf
 
+# Download packages
+RUN apt-mirror
+
 # Add libcuda dummy dependency
 ADD control .
 RUN apt-get update && \
