@@ -2,6 +2,14 @@ FROM ubuntu:16.04
 
 WORKDIR /root/
 
+# Fetch keys
+RUN apt-get -y update
+RUN apt-get -y install curl gnupg
+RUN curl -fsSL https://download.docker.com/linux/ubuntu/gpg | apt-key add -
+RUN curl -s -L https://nvidia.github.io/nvidia-docker/gpgkey | apt-key add -
+RUN apt-key adv --fetch-keys \
+	"http://developer.download.nvidia.com/compute/cuda/repos/ubuntu$(lsb_release -rs | tr -d ".")/x86_64/7fa2af80.pub"
+
 # Generate mirror.list
 RUN apt-get install -y apt-mirror lsb-release
 ADD mirror-list.sh .
